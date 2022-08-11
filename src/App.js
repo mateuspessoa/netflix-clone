@@ -3,12 +3,15 @@ import { useEffect, useState } from "react";
 import Tmdb from './Tmdb';
 import MovieRow from "./components/MovieRow";
 import FeatureMovie from "./components/FeatureMovie";
+import Header from "./components/Header";
 import './App.css';
 
 function App() {
 
   const [movieList, setMovieList] = useState([]);
   const [featureData, setFeatureData] = useState(null);
+
+  const [blackHeader, setBlackHeader] = useState(false);
 
   useEffect(() => {
     const loadAll = async () => {
@@ -27,9 +30,26 @@ function App() {
     loadAll();
   }, [])
 
+    useEffect(() => {
+      const scrollListener = () => {
+        if(window.scrollY > 10) {
+          setBlackHeader(true);
+        } else {
+          setBlackHeader(false);
+        }
+      }
+
+      window.addEventListener('scroll', scrollListener);
+      return () => {
+        window.removeEventListener('scroll', scrollListener);
+      }
+    }, [])
+
   return (
 
     <div className="page">
+
+      <Header black={blackHeader} />
 
       {featureData &&
         <FeatureMovie item={featureData} />
@@ -40,6 +60,12 @@ function App() {
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}
       </section>
+
+      <footer>
+        Desenvolvido por <strong><a href="https://www.linkedin.com/in/mateus-pessoa-17635a22a/" rel="noopener" target="_blank">Mateus Pessoa</a></strong> <br/>
+        Direitos de imagem para Netflix <br />
+        Dados via <a href="https://www.themoviedb.org/?language=pt-BR" rel="noopener" target="_blank">themoviedb.org</a>
+      </footer>
     </div>
   )
 }
