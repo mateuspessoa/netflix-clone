@@ -1,3 +1,5 @@
+
+
 const API_KEY = '155faebbd255dac365c123614c85be43';
 
 const API_BASE = 'https://api.themoviedb.org/3';
@@ -54,6 +56,27 @@ const exportedCategories = {
             }
 
         ]
+    },
+
+    getMovieInfo: async (movieId, type) => {
+        let info = {};
+
+        if(movieId) {
+            switch(type) {
+                case 'movie':
+                    info = await basicFetch(`/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`);
+                break;
+                case 'tv':
+                    info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`);
+                break;
+
+                default:
+                    return null;
+
+            }
+        }
+
+        return info;
     }
 }
 
