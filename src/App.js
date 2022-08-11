@@ -62,9 +62,9 @@ function App() {
       </section>
 
       <footer>
-        Desenvolvido por <strong><a href="https://www.linkedin.com/in/mateus-pessoa-17635a22a/" rel="noopener" target="_blank">Mateus Pessoa</a></strong> <br/>
+        Desenvolvido por <strong>Mateus Pessoa</strong> <br/>
         Direitos de imagem para Netflix <br />
-        Dados via <a href="https://www.themoviedb.org/?language=pt-BR" rel="noopener" target="_blank">themoviedb.org</a>
+        Dados via themoviedb.org
       </footer>
     </div>
   )

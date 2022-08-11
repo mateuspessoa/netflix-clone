@@ -20,7 +20,6 @@ footer {
     padding-bottom: 20px;
 }
 
-footer a {
-    text-decoration: none;
+footer strong {
     color: red;
 }
